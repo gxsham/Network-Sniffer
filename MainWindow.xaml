@@ -1,0 +1,147 @@
+﻿<Window x:Class="lab4PR.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:lab4PR"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="550">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" >
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="7*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Margin="1" Text="Source" TextAlignment="Center"/>
+                <TextBlock Grid.Column="1" Margin="1" Text="Destination" TextAlignment="Center"/>
+                <TextBlock Grid.Column="2" Margin="1" Text="Protocol" TextAlignment="Center"/>
+                <TextBlock Grid.Column="3" Margin="1" Text="Length" TextAlignment="Center"/>
+            </Grid>
+            <ListBox Grid.Row="1" x:Name="list_view" HorizontalAlignment="Stretch" ScrollViewer.CanContentScroll="True">
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid x:Name="short_grid" MouseLeftButtonDown="short_grid_MouseLeftButtonDown">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" TextAlignment="Center" Text="{Binding Source}"/>
+                            <TextBlock Grid.Column="1" TextAlignment="Center" Text="{Binding Destination}"/>
+                            <TextBlock Grid.Column="2" TextAlignment="Center" Text="{Binding Protocol}"/>
+                            <TextBlock Grid.Column="3" TextAlignment="Center" Text="{Binding Total_len}"/>
+                        </Grid> 
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+        <Grid Grid.Row="1" x:Name="Data_grid" Background="LightSeaGreen">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+				<RowDefinition/>
+				<RowDefinition Height="4*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="4*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Background="Black" Foreground="White" Margin="1" Text="Version" FontWeight="ExtraBold" TextAlignment="Center"/>
+                <TextBlock Grid.Column="1" Background="Black" Foreground="White" Margin="1" Text="Header len" FontWeight="ExtraBold" TextAlignment="Center"/>
+                <TextBlock Grid.Column="2" Background="Black" Foreground="White" Margin="1" Text="TOS" FontWeight="ExtraBold" TextAlignment="Center"/>
+                <TextBlock Grid.Column="3" Background="Black" Foreground="White" Margin="1" Text="Total length" FontWeight="ExtraBold" TextAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="4*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" x:Name="Version" FontWeight="ExtraBold" TextAlignment="Center"/>
+                <TextBlock Grid.Column="1" x:Name="Header_len" FontWeight="ExtraBold" TextAlignment="Center"/>
+                <TextBlock Grid.Column="2" x:Name="TOS" FontWeight="ExtraBold" TextAlignment="Center"/>
+                <TextBlock Grid.Column="3" x:Name="Total_length" FontWeight="ExtraBold" TextAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Background="Black" Foreground="White" Margin="1" Text="Identifier" FontWeight="ExtraBold" TextAlignment="Center"/>
+                <TextBlock Grid.Column="1" Background="Black" Foreground="White" Margin="1" Text="Flags" FontWeight="ExtraBold" TextAlignment="Center"/>
+                <TextBlock Grid.Column="2" Background="Black" Foreground="White" Margin="1" Text="Fragment offset" FontWeight="ExtraBold" TextAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" x:Name="Identifier" FontWeight="ExtraBold" TextAlignment="Center"/>
+                <TextBlock Grid.Column="1" x:Name="Flags" FontWeight="ExtraBold" TextAlignment="Center"/>
+                <TextBlock Grid.Column="2" x:Name="Fragment_offset" FontWeight="ExtraBold" TextAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Row="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Background="Black" Foreground="White" Margin="1" Text="Time to live" FontWeight="ExtraBold" TextAlignment="Center"/>
+                <TextBlock Grid.Column="1" Background="Black" Foreground="White" Margin="1" Text="Protocol" FontWeight="ExtraBold" TextAlignment="Center"/>
+                <TextBlock Grid.Column="2" Background="Black" Foreground="White" Margin="1" Text="Header Checksum" FontWeight="ExtraBold" TextAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Row="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" x:Name="TTL" FontWeight="ExtraBold" TextAlignment="Center"/>
+                <TextBlock Grid.Column="1" x:Name="Protocol" FontWeight="ExtraBold" TextAlignment="Center"/>
+                <TextBlock Grid.Column="2" x:Name="Header_Checksum" FontWeight="ExtraBold" TextAlignment="Center"/>
+            </Grid>
+            <TextBlock Grid.Row="6" Background="Black" Foreground="White" Margin="1" Text="Source Address" FontWeight="ExtraBold" TextAlignment="Center"/>
+            <TextBlock Grid.Row="7" x:Name="SRC" FontWeight="ExtraBlack" TextAlignment="Center"/>
+            <TextBlock Grid.Row="8" Background="Black" Foreground="White" Margin="1" Text="Destination Address" FontWeight="ExtraBold" TextAlignment="Center"/>
+            <TextBlock Grid.Row="9" x:Name="DST" FontWeight="ExtraBold" TextAlignment="Center"/>
+			<TextBlock Grid.Row="10" Background="Black" Foreground="White" Margin="1" Text="Payload" FontWeight="ExtraBold" TextAlignment="Center"/>
+            <ScrollViewer Grid.Row="11" VerticalScrollBarVisibility="Visible">
+                <TextBlock x:Name="Payload" TextWrapping="Wrap"/>
+            </ScrollViewer>
+            
+        </Grid>
+
+
+    </Grid>
+</Window>
